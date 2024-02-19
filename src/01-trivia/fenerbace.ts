@@ -1,16 +1,10 @@
-import { Game } from "./game"
-
 export class Fenerbace {
     private readonly popQuestions: Array<string> = []
     private readonly scienceQuestions: Array<string> = []
     private readonly sportsQuestions: Array<string> = []
     private readonly rockQuestions: Array<string> = []
 
-    constructor(game: Game) {
-        this.popQuestions = game.popQuestions
-        this.scienceQuestions = game.scienceQuestions
-        this.sportsQuestions = game.sportsQuestions
-        this.rockQuestions = game.rockQuestions
+    constructor() {
         this.fillQuestions()
     }
 

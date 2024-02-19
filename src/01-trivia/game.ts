@@ -8,16 +8,10 @@ export class Game {
     private currentPlayer = 0
     private isGettingOutOfPenaltyBox = false
 
-    // R-Add History
-    public readonly popQuestions: Array<string> = []
-    public readonly scienceQuestions: Array<string> = []
-    public readonly sportsQuestions: Array<string> = []
-    public readonly rockQuestions: Array<string> = []
-
     private fenerbace: Fenerbace
 
     constructor() {
-        this.fenerbace = new Fenerbace(this)
+        this.fenerbace = new Fenerbace()
     }
 
     public add(name: string): boolean {
