@@ -23,8 +23,10 @@ test("Out of bound position", () => {
     expect(() => deck.categoryAt(-27)).toThrow(/Invalid position.*-27/)
 })
 
-test("buh", () => {
+test("same category, many questions", () => {
     const deck = new QuestionsDeck()
 
-    deck.askQuestionFor("Pop")
+    expect(deck.askQuestionFor("Pop")).toBe("Pop Question 0")
+    expect(deck.askQuestionFor("Pop")).toBe("Pop Question 1")
+    expect(deck.askQuestionFor("Pop")).toBe("Pop Question 2")
 })
