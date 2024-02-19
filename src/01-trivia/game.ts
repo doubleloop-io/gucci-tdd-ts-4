@@ -99,19 +99,9 @@ export class Game {
         }
     }
 
-    // R-Add History
     private askQuestion(): void {
         const currentCategory = this.currentCategory()
-        this.askQuestionFor(currentCategory)
-    }
-
-    private askQuestionFor(currentCategory: string) {
-        if (currentCategory == "Pop") console.log(this.popQuestions.shift())
-        if (currentCategory == "Science")
-            console.log(this.scienceQuestions.shift())
-        if (currentCategory == "Sports")
-            console.log(this.sportsQuestions.shift())
-        if (currentCategory == "Rock") console.log(this.rockQuestions.shift())
+        this.fenerbace.askQuestionFor(currentCategory, this)
     }
 
     private currentCategory(): string {
