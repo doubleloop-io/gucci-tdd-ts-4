@@ -18,18 +18,7 @@ export class Game {
 
     constructor() {
         this.fenerbace = new Fenerbace()
-
-        this.fillQuestions()
-    }
-
-    // R-Add History
-    private fillQuestions() {
-        for (let i = 0; i < 50; i++) {
-            this.popQuestions.push("Pop Question " + i)
-            this.scienceQuestions.push("Science Question " + i)
-            this.sportsQuestions.push("Sports Question " + i)
-            this.rockQuestions.push("Rock Question " + i)
-        }
+        this.fenerbace.fillQuestions(this)
     }
 
     public add(name: string): boolean {

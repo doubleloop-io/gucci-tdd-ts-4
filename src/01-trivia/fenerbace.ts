@@ -1,6 +1,15 @@
 import { Game } from "./game"
 
 export class Fenerbace {
+    fillQuestions(game: Game) {
+        for (let i = 0; i < 50; i++) {
+            game.popQuestions.push("Pop Question " + i)
+            game.scienceQuestions.push("Science Question " + i)
+            game.sportsQuestions.push("Sports Question " + i)
+            game.rockQuestions.push("Rock Question " + i)
+        }
+    }
+
     askQuestionFor(currentCategory: string, game: Game) {
         if (currentCategory == "Pop") console.log(game.popQuestions.shift())
         if (currentCategory == "Science")
