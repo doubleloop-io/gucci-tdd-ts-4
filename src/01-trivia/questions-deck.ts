@@ -17,29 +17,21 @@ export class QuestionsDeck {
         }
     }
 
-    askQuestionFor(currentCategory: string) {
-        if (currentCategory == "Pop") {
-            const question = this.popQuestions.shift()
-            console.log(question)
-            return question
+    questionFor(category: string) {
+        if (category == "Pop") {
+            return this.popQuestions.shift()
         }
-        if (currentCategory == "Science") {
-            const question = this.scienceQuestions.shift()
-            console.log(question)
-            return question
+        if (category == "Science") {
+            return this.scienceQuestions.shift()
         }
-        if (currentCategory == "Sports") {
-            const question = this.sportsQuestions.shift()
-            console.log(question)
-            return question
+        if (category == "Sports") {
+            return this.sportsQuestions.shift()
         }
-        if (currentCategory == "Rock") {
-            const question = this.rockQuestions.shift()
-            console.log(question)
-            return question
+        if (category == "Rock") {
+            return this.rockQuestions.shift()
         }
 
-        throw new Error(`Unknown category ${currentCategory}`)
+        throw new Error(`Unknown category ${category}`)
     }
 
     categoryAt(position: number) {

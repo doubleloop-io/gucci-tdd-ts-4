@@ -83,7 +83,8 @@ export class Game {
 
     private askQuestion(): void {
         const currentCategory = this.currentCategory()
-        this.questionsDeck.askQuestionFor(currentCategory)
+        const question = this.questionsDeck.questionFor(currentCategory)
+        console.log(question)
     }
 
     private currentCategory(): string {
