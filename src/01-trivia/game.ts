@@ -9,10 +9,10 @@ export class Game {
     private isGettingOutOfPenaltyBox = false
 
     // R-Add History
-    private popQuestions: Array<string> = []
-    private scienceQuestions: Array<string> = []
-    private sportsQuestions: Array<string> = []
-    private rockQuestions: Array<string> = []
+    public readonly popQuestions: Array<string> = []
+    public readonly scienceQuestions: Array<string> = []
+    public readonly sportsQuestions: Array<string> = []
+    public readonly rockQuestions: Array<string> = []
 
     private fenerbace: Fenerbace
 
@@ -101,14 +101,17 @@ export class Game {
 
     // R-Add History
     private askQuestion(): void {
-        if (this.currentCategory() == "Pop")
-            console.log(this.popQuestions.shift())
-        if (this.currentCategory() == "Science")
+        const currentCategory = this.currentCategory()
+        this.askQuestionFor(currentCategory)
+    }
+
+    private askQuestionFor(currentCategory: string) {
+        if (currentCategory == "Pop") console.log(this.popQuestions.shift())
+        if (currentCategory == "Science")
             console.log(this.scienceQuestions.shift())
-        if (this.currentCategory() == "Sports")
+        if (currentCategory == "Sports")
             console.log(this.sportsQuestions.shift())
-        if (this.currentCategory() == "Rock")
-            console.log(this.rockQuestions.shift())
+        if (currentCategory == "Rock") console.log(this.rockQuestions.shift())
     }
 
     private currentCategory(): string {

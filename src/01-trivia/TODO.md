@@ -5,4 +5,9 @@
   - Game ctor
   - createRockQuestion
   - askQuestion
-  - currentCategory
+
+
+
+
+# DONE
+- currentCategory
