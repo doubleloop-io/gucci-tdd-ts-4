@@ -1,14 +1,18 @@
-import { expect, test } from "vitest"
+import { expect, test, beforeEach, afterEach } from "vitest"
 import { GameRunner } from "./game-runner"
 import { ConsoleLogInterceptor } from "./test-support/console-log.interceptor"
 
-test("run game", () => {
-    const interceptor = new ConsoleLogInterceptor()
+let interceptor: ConsoleLogInterceptor
+beforeEach(() => {
+    interceptor = new ConsoleLogInterceptor()
     interceptor.startReceiving()
-
-    GameRunner.main()
-
+})
+afterEach(() => {
     interceptor.stopReceiving()
+})
+
+test("run game", () => {
+    GameRunner.main()
 
     console.log(interceptor.logged)
 })
