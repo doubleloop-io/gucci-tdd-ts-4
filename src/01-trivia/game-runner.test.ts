@@ -13,22 +13,10 @@ afterEach(() => {
 })
 
 test("run game", () => {
-    const rng = new Prando(11)
-    GameRunner.run((maxExcluded) => rng.nextInt(0, maxExcluded - 1))
+    for (let i = 1; i < 100; i++) {
+        const rng = new Prando(11 * i)
+        GameRunner.run((maxExcluded) => rng.nextInt(0, maxExcluded - 1))
+    }
 
     expect(interceptor.logged).toMatchSnapshot()
-})
-
-test("Prando", () => {
-    const rng = new Prando(11)
-
-    const numbers = [
-        rng.nextInt(0, 10),
-        rng.nextInt(0, 10),
-        rng.nextInt(0, 10),
-        rng.nextInt(0, 10),
-        rng.nextInt(0, 10),
-    ]
-
-    expect(numbers).toEqual([5, 7, 4, 8, 2])
 })
