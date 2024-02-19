@@ -1,8 +1,15 @@
 export class QuestionsDeck {
     private readonly popQuestions: Array<string> = []
+    private popPositions = [0, 4, 8]
+
     private readonly scienceQuestions: Array<string> = []
+    private sciencePositions = [1, 5, 9]
+
     private readonly sportsQuestions: Array<string> = []
+    private sportsPositions = [2, 6, 10]
+
     private readonly rockQuestions: Array<string> = []
+    private rockPositions = [3, 7, 11]
 
     constructor() {
         this.fillQuestions()
@@ -35,18 +42,10 @@ export class QuestionsDeck {
     }
 
     categoryAt(position: number) {
-        if (position == 0) return "Pop"
-        if (position == 4) return "Pop"
-        if (position == 8) return "Pop"
-        if (position == 1) return "Science"
-        if (position == 5) return "Science"
-        if (position == 9) return "Science"
-        if (position == 2) return "Sports"
-        if (position == 6) return "Sports"
-        if (position == 10) return "Sports"
-        if (position == 3) return "Rock"
-        if (position == 7) return "Rock"
-        if (position == 11) return "Rock"
+        if (this.popPositions.includes(position)) return "Pop"
+        if (this.sciencePositions.includes(position)) return "Science"
+        if (this.sportsPositions.includes(position)) return "Sports"
+        if (this.rockPositions.includes(position)) return "Rock"
 
         throw new Error(`Invalid position ${position}`)
     }
