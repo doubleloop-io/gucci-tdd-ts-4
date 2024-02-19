@@ -36,6 +36,9 @@ export class QuestionsDeck {
         if (position == 2) return "Sports"
         if (position == 6) return "Sports"
         if (position == 10) return "Sports"
+        if (position == 3) return "Rock"
+        if (position == 7) return "Rock"
+        if (position == 11) return "Rock"
         return "Rock"
     }
 }
