@@ -33,3 +33,18 @@ test.each([["Pop"], ["Science"], ["Sports"], ["Rock"]])(
         expect(deck.askQuestionFor(category)).toBe(`${category} Question 2`)
     },
 )
+
+test("many categories, one question", () => {
+    const deck = new QuestionsDeck()
+
+    expect(deck.askQuestionFor("Pop")).toBe("Pop Question 0")
+    expect(deck.askQuestionFor("Science")).toBe("Science Question 0")
+    expect(deck.askQuestionFor("Sports")).toBe("Sports Question 0")
+    expect(deck.askQuestionFor("Rock")).toBe("Rock Question 0")
+})
+
+test("unknown category", () => {
+    const deck = new QuestionsDeck()
+
+    expect(deck.askQuestionFor("NOT_Pop")).toBeUndefined()
+})
