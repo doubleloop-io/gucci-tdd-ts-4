@@ -17,8 +17,7 @@ export class Game {
     private fenerbace: Fenerbace
 
     constructor() {
-        this.fenerbace = new Fenerbace()
-        this.fenerbace.fillQuestions(this)
+        this.fenerbace = new Fenerbace(this)
     }
 
     public add(name: string): boolean {

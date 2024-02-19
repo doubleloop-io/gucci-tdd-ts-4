@@ -1,7 +1,11 @@
 import { Game } from "./game"
 
 export class Fenerbace {
-    fillQuestions(game: Game) {
+    constructor(game: Game) {
+        this.fillQuestions(game)
+    }
+
+    private fillQuestions(game: Game) {
         for (let i = 0; i < 50; i++) {
             game.popQuestions.push("Pop Question " + i)
             game.scienceQuestions.push("Science Question " + i)
