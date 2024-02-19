@@ -1,3 +1,5 @@
+import { Fenerbace } from "./fenerbace"
+
 export class Game {
     private players: Array<string> = []
     private places: Array<number> = new Array(6).fill(0)
@@ -12,8 +14,12 @@ export class Game {
     private sportsQuestions: Array<string> = []
     private rockQuestions: Array<string> = []
 
+    private fenerbace: Fenerbace
+
     // R-Add History
     constructor() {
+        this.fenerbace = new Fenerbace()
+
         for (let i = 0; i < 50; i++) {
             this.popQuestions.push("Pop Question " + i)
             this.scienceQuestions.push("Science Question " + i)
