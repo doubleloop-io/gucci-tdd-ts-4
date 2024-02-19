@@ -17,8 +17,8 @@ test.each([
 test("Out of bound position", () => {
     const deck = new QuestionsDeck()
 
-    expect(deck.categoryAt(12)).toBe("Rock")
-    expect(deck.categoryAt(99)).toBe("Rock")
-    expect(deck.categoryAt(-1)).toBe("Rock")
-    expect(deck.categoryAt(-27)).toBe("Rock")
+    expect(() => deck.categoryAt(12)).toThrow(/Invalid position.*12/)
+    expect(() => deck.categoryAt(99)).toThrow(/Invalid position.*99/)
+    expect(() => deck.categoryAt(-1)).toThrow(/Invalid position.*-1/)
+    expect(() => deck.categoryAt(-27)).toThrow(/Invalid position.*-27/)
 })

@@ -39,6 +39,7 @@ export class QuestionsDeck {
         if (position == 3) return "Rock"
         if (position == 7) return "Rock"
         if (position == 11) return "Rock"
-        return "Rock"
+
+        throw new Error(`Invalid position ${position}`)
     }
 }
