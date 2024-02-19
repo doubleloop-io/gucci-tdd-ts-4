@@ -14,4 +14,11 @@ test.each([
     expect(deck.categoryAt(places[2])).toBe(category)
 })
 
-test.todo("Out of bound position", () => {})
+test("Out of bound position", () => {
+    const deck = new QuestionsDeck()
+
+    expect(deck.categoryAt(12)).toBe("Rock")
+    expect(deck.categoryAt(99)).toBe("Rock")
+    expect(deck.categoryAt(-1)).toBe("Rock")
+    expect(deck.categoryAt(-27)).toBe("Rock")
+})
