@@ -1,35 +1,35 @@
 import { Game } from "./game"
 
 export class Fenerbace {
-    public readonly popQuestions: Array<string> = []
-    public readonly scienceQuestions: Array<string> = []
-    public readonly sportsQuestions: Array<string> = []
-    public readonly rockQuestions: Array<string> = []
+    private readonly popQuestions: Array<string> = []
+    private readonly scienceQuestions: Array<string> = []
+    private readonly sportsQuestions: Array<string> = []
+    private readonly rockQuestions: Array<string> = []
 
     constructor(game: Game) {
         this.popQuestions = game.popQuestions
         this.scienceQuestions = game.scienceQuestions
         this.sportsQuestions = game.sportsQuestions
         this.rockQuestions = game.rockQuestions
-        this.fillQuestions(game)
+        this.fillQuestions()
     }
 
-    private fillQuestions(game: Game) {
+    private fillQuestions() {
         for (let i = 0; i < 50; i++) {
-            game.popQuestions.push("Pop Question " + i)
-            game.scienceQuestions.push("Science Question " + i)
-            game.sportsQuestions.push("Sports Question " + i)
-            game.rockQuestions.push("Rock Question " + i)
+            this.popQuestions.push("Pop Question " + i)
+            this.scienceQuestions.push("Science Question " + i)
+            this.sportsQuestions.push("Sports Question " + i)
+            this.rockQuestions.push("Rock Question " + i)
         }
     }
 
-    askQuestionFor(currentCategory: string, game: Game) {
-        if (currentCategory == "Pop") console.log(game.popQuestions.shift())
+    askQuestionFor(currentCategory: string) {
+        if (currentCategory == "Pop") console.log(this.popQuestions.shift())
         if (currentCategory == "Science")
-            console.log(game.scienceQuestions.shift())
+            console.log(this.scienceQuestions.shift())
         if (currentCategory == "Sports")
-            console.log(game.sportsQuestions.shift())
-        if (currentCategory == "Rock") console.log(game.rockQuestions.shift())
+            console.log(this.sportsQuestions.shift())
+        if (currentCategory == "Rock") console.log(this.rockQuestions.shift())
     }
 
     currentCategoryFor(currentPlayerPlace: number) {

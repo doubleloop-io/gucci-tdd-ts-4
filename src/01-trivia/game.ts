@@ -89,7 +89,7 @@ export class Game {
 
     private askQuestion(): void {
         const currentCategory = this.currentCategory()
-        this.fenerbace.askQuestionFor(currentCategory, this)
+        this.fenerbace.askQuestionFor(currentCategory)
     }
 
     private currentCategory(): string {
