@@ -9,14 +9,18 @@ export class GameRunner {
 
         let notAWinner
         do {
-            game.roll(Math.floor(Math.random() * 6) + 1)
+            game.roll(this.randomNumber(6) + 1)
 
-            if (Math.floor(Math.random() * 10) == 7) {
+            if (this.randomNumber(10) == 7) {
                 notAWinner = game.wrongAnswer()
             } else {
                 notAWinner = game.wasCorrectlyAnswered()
             }
         } while (notAWinner)
+    }
+
+    private static randomNumber(maxExcluded: number) {
+        return Math.floor(Math.random() * maxExcluded)
     }
 }
 
