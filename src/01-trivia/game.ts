@@ -88,7 +88,7 @@ export class Game {
 
     private currentCategory(): string {
         const currentPlayerPlace = this.places[this.currentPlayer]
-        return this.questionsDeck.currentCategoryFor(currentPlayerPlace)
+        return this.questionsDeck.categoryAt(currentPlayerPlace)
     }
 
     private didPlayerWin(): boolean {

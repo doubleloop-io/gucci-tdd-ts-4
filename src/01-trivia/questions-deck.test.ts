@@ -9,7 +9,9 @@ test.each([
 ])("%s category at %s", (category: string, places: number[]) => {
     const deck = new QuestionsDeck()
 
-    expect(deck.currentCategoryFor(places[0])).toBe(category)
-    expect(deck.currentCategoryFor(places[1])).toBe(category)
-    expect(deck.currentCategoryFor(places[2])).toBe(category)
+    expect(deck.categoryAt(places[0])).toBe(category)
+    expect(deck.categoryAt(places[1])).toBe(category)
+    expect(deck.categoryAt(places[2])).toBe(category)
 })
+
+test.todo("Out of bound position", () => {})
