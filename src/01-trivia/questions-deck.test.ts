@@ -46,5 +46,5 @@ test("many categories, one question", () => {
 test("unknown category", () => {
     const deck = new QuestionsDeck()
 
-    expect(deck.askQuestionFor("NOT_Pop")).toBeUndefined()
+    expect(() => deck.askQuestionFor("NOT_Pop")).toThrow()
 })

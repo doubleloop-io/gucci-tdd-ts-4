@@ -39,7 +39,7 @@ export class QuestionsDeck {
             return question
         }
 
-        return undefined
+        throw new Error(`Unknown category ${currentCategory}`)
     }
 
     categoryAt(position: number) {
