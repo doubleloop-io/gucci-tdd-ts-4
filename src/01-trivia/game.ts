@@ -16,10 +16,14 @@ export class Game {
 
     private fenerbace: Fenerbace
 
-    // R-Add History
     constructor() {
         this.fenerbace = new Fenerbace()
 
+        this.fillQuestions()
+    }
+
+    // R-Add History
+    private fillQuestions() {
         for (let i = 0; i < 50; i++) {
             this.popQuestions.push("Pop Question " + i)
             this.scienceQuestions.push("Science Question " + i)
