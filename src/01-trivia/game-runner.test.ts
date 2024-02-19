@@ -5,17 +5,18 @@ import Prando from "prando"
 
 let interceptor: ConsoleLogInterceptor
 beforeEach(() => {
-    // interceptor = new ConsoleLogInterceptor()
-    // interceptor.startReceiving()
+    interceptor = new ConsoleLogInterceptor()
+    interceptor.startReceiving()
 })
 afterEach(() => {
-    // interceptor.stopReceiving()
+    interceptor.stopReceiving()
 })
 
 test("run game", () => {
-    GameRunner.main()
+    const rng = new Prando(11)
+    GameRunner.run((maxExcluded) => rng.nextInt(0, maxExcluded - 1))
 
-    // expect(interceptor.logged).toMatchSnapshot()
+    expect(interceptor.logged).toMatchSnapshot()
 })
 
 test("Prando", () => {

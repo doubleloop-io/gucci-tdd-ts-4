@@ -2,6 +2,10 @@ import { Game } from "./game"
 
 export class GameRunner {
     public static main(): void {
+        this.run(this.randomNumber)
+    }
+
+    public static run(randomNumber: (maxExcluded: number) => number) {
         const game = new Game()
         game.add("Chet")
         game.add("Pat")
@@ -9,9 +13,9 @@ export class GameRunner {
 
         let notAWinner
         do {
-            game.roll(this.randomNumber(6) + 1)
+            game.roll(randomNumber(6) + 1)
 
-            if (this.randomNumber(10) == 7) {
+            if (randomNumber(10) == 7) {
                 notAWinner = game.wrongAnswer()
             } else {
                 notAWinner = game.wasCorrectlyAnswered()
