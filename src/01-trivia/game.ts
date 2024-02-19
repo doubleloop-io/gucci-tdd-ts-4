@@ -32,7 +32,6 @@ export class Game {
         }
     }
 
-    // R-Add History
     public add(name: string): boolean {
         this.players.push(name)
         this.places[this.howManyPlayers()] = 0
@@ -112,18 +111,9 @@ export class Game {
             console.log(this.rockQuestions.shift())
     }
 
-    // R-Add History
     private currentCategory(): string {
-        if (this.places[this.currentPlayer] == 0) return "Pop"
-        if (this.places[this.currentPlayer] == 4) return "Pop"
-        if (this.places[this.currentPlayer] == 8) return "Pop"
-        if (this.places[this.currentPlayer] == 1) return "Science"
-        if (this.places[this.currentPlayer] == 5) return "Science"
-        if (this.places[this.currentPlayer] == 9) return "Science"
-        if (this.places[this.currentPlayer] == 2) return "Sports"
-        if (this.places[this.currentPlayer] == 6) return "Sports"
-        if (this.places[this.currentPlayer] == 10) return "Sports"
-        return "Rock"
+        const currentPlayerPlace = this.places[this.currentPlayer]
+        return this.fenerbace.currentCategoryFor(currentPlayerPlace)
     }
 
     private didPlayerWin(): boolean {
