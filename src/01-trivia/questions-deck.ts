@@ -18,12 +18,28 @@ export class QuestionsDeck {
     }
 
     askQuestionFor(currentCategory: string) {
-        if (currentCategory == "Pop") console.log(this.popQuestions.shift())
-        if (currentCategory == "Science")
-            console.log(this.scienceQuestions.shift())
-        if (currentCategory == "Sports")
-            console.log(this.sportsQuestions.shift())
-        if (currentCategory == "Rock") console.log(this.rockQuestions.shift())
+        if (currentCategory == "Pop") {
+            const question = this.popQuestions.shift()
+            console.log(question)
+            return question
+        }
+        if (currentCategory == "Science") {
+            const question = this.scienceQuestions.shift()
+            console.log(question)
+            return question
+        }
+        if (currentCategory == "Sports") {
+            const question = this.sportsQuestions.shift()
+            console.log(question)
+            return question
+        }
+        if (currentCategory == "Rock") {
+            const question = this.rockQuestions.shift()
+            console.log(question)
+            return question
+        }
+
+        return undefined
     }
 
     categoryAt(position: number) {

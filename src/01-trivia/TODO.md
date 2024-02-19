@@ -1,5 +1,7 @@
 # TODO
-
+- askQuestionFor
+  - Category is a simple string
+  - console.log inside 
 
 
 
