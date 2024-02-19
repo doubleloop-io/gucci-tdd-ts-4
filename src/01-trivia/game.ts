@@ -6,11 +6,13 @@ export class Game {
     private currentPlayer = 0
     private isGettingOutOfPenaltyBox = false
 
+    // R-Add History
     private popQuestions: Array<string> = []
     private scienceQuestions: Array<string> = []
     private sportsQuestions: Array<string> = []
     private rockQuestions: Array<string> = []
 
+    // R-Add History
     constructor() {
         for (let i = 0; i < 50; i++) {
             this.popQuestions.push("Pop Question " + i)
@@ -20,6 +22,7 @@ export class Game {
         }
     }
 
+    // R-Add History
     private createRockQuestion(index: number): string {
         return "Rock Question " + index
     }
@@ -91,6 +94,7 @@ export class Game {
         }
     }
 
+    // R-Add History
     private askQuestion(): void {
         if (this.currentCategory() == "Pop")
             console.log(this.popQuestions.shift())
@@ -102,6 +106,7 @@ export class Game {
             console.log(this.rockQuestions.shift())
     }
 
+    // R-Add History
     private currentCategory(): string {
         if (this.places[this.currentPlayer] == 0) return "Pop"
         if (this.places[this.currentPlayer] == 4) return "Pop"
