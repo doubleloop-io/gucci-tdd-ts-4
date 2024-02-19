@@ -1,4 +1,4 @@
-import { Fenerbace } from "./fenerbace"
+import { QuestionsDeck } from "./questions-deck"
 
 export class Game {
     private players: Array<string> = []
@@ -8,10 +8,10 @@ export class Game {
     private currentPlayer = 0
     private isGettingOutOfPenaltyBox = false
 
-    private fenerbace: Fenerbace
+    private questionsDeck: QuestionsDeck
 
     constructor() {
-        this.fenerbace = new Fenerbace()
+        this.questionsDeck = new QuestionsDeck()
     }
 
     public add(name: string): boolean {
@@ -83,12 +83,12 @@ export class Game {
 
     private askQuestion(): void {
         const currentCategory = this.currentCategory()
-        this.fenerbace.askQuestionFor(currentCategory)
+        this.questionsDeck.askQuestionFor(currentCategory)
     }
 
     private currentCategory(): string {
         const currentPlayerPlace = this.places[this.currentPlayer]
-        return this.fenerbace.currentCategoryFor(currentPlayerPlace)
+        return this.questionsDeck.currentCategoryFor(currentPlayerPlace)
     }
 
     private didPlayerWin(): boolean {

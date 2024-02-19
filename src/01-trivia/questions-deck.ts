@@ -1,4 +1,4 @@
-export class Fenerbace {
+export class QuestionsDeck {
     private readonly popQuestions: Array<string> = []
     private readonly scienceQuestions: Array<string> = []
     private readonly sportsQuestions: Array<string> = []
