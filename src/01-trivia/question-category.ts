@@ -1,9 +1,7 @@
 export class QuestionCategory {
     private questions: Array<string> = []
-    constructor(
-        public name: string,
-        private positions: number[],
-    ) {
+
+    constructor(public name: string) {
         this.fillQuestions()
     }
 
@@ -15,9 +13,5 @@ export class QuestionCategory {
 
     nextQuestion() {
         return this.questions.shift()
-    }
-
-    isCategoryAt(position: number) {
-        return this.positions.includes(position)
     }
 }

@@ -20,11 +20,7 @@ export class Game {
         this.board = new Board(categoryNames, noOfCellPerCategory)
 
         const categories = categoryNames.map(
-            (name, index) =>
-                new QuestionCategory(
-                    name,
-                    this.board.categoryPositionFor(index),
-                ),
+            (name) => new QuestionCategory(name),
         )
         this.questionsDeck = new QuestionsDeck(categories)
     }

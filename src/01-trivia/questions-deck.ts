@@ -13,11 +13,4 @@ export class QuestionsDeck {
 
         return found.nextQuestion()
     }
-
-    categoryAt(position: number) {
-        const found = this.categories.find((c) => c.isCategoryAt(position))
-        if (!found) throw new Error(`Invalid position ${position}`)
-
-        return found.name
-    }
 }

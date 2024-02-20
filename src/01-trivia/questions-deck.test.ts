@@ -6,10 +6,10 @@ test.each([["Pop"], ["Science"], ["Sports"], ["Rock"]])(
     "category %s, many questions",
     (category: string) => {
         const deck = new QuestionsDeck([
-            new QuestionCategory("Pop", [0, 4, 8]),
-            new QuestionCategory("Science", [1, 5, 9]),
-            new QuestionCategory("Sports", [2, 6, 10]),
-            new QuestionCategory("Rock", [3, 7, 11]),
+            new QuestionCategory("Pop"),
+            new QuestionCategory("Science"),
+            new QuestionCategory("Sports"),
+            new QuestionCategory("Rock"),
             // new QuestionCategory("History", [4, 8, ??]),
         ])
 
@@ -21,11 +21,10 @@ test.each([["Pop"], ["Science"], ["Sports"], ["Rock"]])(
 
 test("many categories, one question", () => {
     const deck = new QuestionsDeck([
-        new QuestionCategory("Pop", [0, 4, 8]),
-        new QuestionCategory("Science", [1, 5, 9]),
-        new QuestionCategory("Sports", [2, 6, 10]),
-        new QuestionCategory("Rock", [3, 7, 11]),
-        // new QuestionCategory("History", [4, 8, ??]),
+        new QuestionCategory("Pop"),
+        new QuestionCategory("Science"),
+        new QuestionCategory("Sports"),
+        new QuestionCategory("Rock"),
     ])
 
     expect(deck.questionFor("Pop")).toBe("Pop Question 0")
@@ -36,10 +35,10 @@ test("many categories, one question", () => {
 
 test("unknown category", () => {
     const deck = new QuestionsDeck([
-        new QuestionCategory("Pop", [0, 4, 8]),
-        new QuestionCategory("Science", [1, 5, 9]),
-        new QuestionCategory("Sports", [2, 6, 10]),
-        new QuestionCategory("Rock", [3, 7, 11]),
+        new QuestionCategory("Pop"),
+        new QuestionCategory("Science"),
+        new QuestionCategory("Sports"),
+        new QuestionCategory("Rock"),
         // new QuestionCategory("History", [4, 8, ??]),
     ])
 
