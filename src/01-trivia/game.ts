@@ -15,7 +15,7 @@ export class Game {
 
     constructor() {
         const noOfCellPerCategory = 3
-        const categoryNames = ["Pop", "Science", "Sports", "Rock"]
+        const categoryNames = ["Pop", "Science", "Sports", "Rock", "History"]
 
         this.board = new Board(categoryNames, noOfCellPerCategory)
 
