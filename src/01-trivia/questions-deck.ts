@@ -1,45 +1,28 @@
 import { QuestionCategory } from "./question-category"
 
 export class QuestionsDeck {
-    private popCategory: QuestionCategory
-    private scienceCategory: QuestionCategory
-    private sportsCategory: QuestionCategory
-    private rockCategory: QuestionCategory
+    private categories: QuestionCategory[]
 
     constructor() {
-        this.popCategory = new QuestionCategory("Pop", [0, 4, 8])
-        this.scienceCategory = new QuestionCategory("Science", [1, 5, 9])
-        this.sportsCategory = new QuestionCategory("Sports", [2, 6, 10])
-        this.rockCategory = new QuestionCategory("Rock", [3, 7, 11])
+        this.categories = [
+            new QuestionCategory("Pop", [0, 4, 8]),
+            new QuestionCategory("Science", [1, 5, 9]),
+            new QuestionCategory("Sports", [2, 6, 10]),
+            new QuestionCategory("Rock", [3, 7, 11]),
+        ]
     }
 
     questionFor(category: string) {
-        if (category == this.popCategory.name) {
-            return this.popCategory.nextQuestion()
-        }
-        if (category == this.scienceCategory.name) {
-            return this.scienceCategory.nextQuestion()
-        }
-        if (category == this.sportsCategory.name) {
-            return this.sportsCategory.nextQuestion()
-        }
-        if (category == this.rockCategory.name) {
-            return this.rockCategory.nextQuestion()
-        }
+        const found = this.categories.find((c) => c.name == category)
+        if (!found) throw new Error(`Unknown category ${category}`)
 
-        throw new Error(`Unknown category ${category}`)
+        return found.nextQuestion()
     }
 
     categoryAt(position: number) {
-        if (this.popCategory.isCategoryAt(position))
-            return this.popCategory.name
-        if (this.scienceCategory.isCategoryAt(position))
-            return this.scienceCategory.name
-        if (this.sportsCategory.isCategoryAt(position))
-            return this.sportsCategory.name
-        if (this.rockCategory.isCategoryAt(position))
-            return this.rockCategory.name
+        const found = this.categories.find((c) => c.isCategoryAt(position))
+        if (!found) throw new Error(`Invalid position ${position}`)
 
-        throw new Error(`Invalid position ${position}`)
+        return found.name
     }
 }
