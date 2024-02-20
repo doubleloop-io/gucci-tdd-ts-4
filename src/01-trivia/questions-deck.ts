@@ -1,49 +1,30 @@
 import { QuestionCategory } from "./question-category"
 
 export class QuestionsDeck {
-    private readonly popQuestions: Array<string> = []
-    private popPositions = [0, 4, 8]
-    popCategory: QuestionCategory
-
-    private readonly scienceQuestions: Array<string> = []
-    private sciencePositions = [1, 5, 9]
-
-    private readonly sportsQuestions: Array<string> = []
-    private sportsPositions = [2, 6, 10]
-
-    private readonly rockQuestions: Array<string> = []
-    private rockPositions = [3, 7, 11]
+    private popCategory: QuestionCategory
+    private scienceCategory: QuestionCategory
+    private sportsCategory: QuestionCategory
+    private rockCategory: QuestionCategory
 
     constructor() {
-        this.popCategory = new QuestionCategory(
-            "Pop",
-            this.popQuestions,
-            this.popPositions,
-        )
-
-        this.fillQuestions()
-    }
-
-    private fillQuestions() {
-        for (let i = 0; i < 50; i++) {
-            this.scienceQuestions.push("Science Question " + i)
-            this.sportsQuestions.push("Sports Question " + i)
-            this.rockQuestions.push("Rock Question " + i)
-        }
+        this.popCategory = new QuestionCategory("Pop", [0, 4, 8])
+        this.scienceCategory = new QuestionCategory("Science", [1, 5, 9])
+        this.sportsCategory = new QuestionCategory("Sports", [2, 6, 10])
+        this.rockCategory = new QuestionCategory("Rock", [3, 7, 11])
     }
 
     questionFor(category: string) {
         if (category == this.popCategory.name) {
             return this.popCategory.nextQuestion()
         }
-        if (category == "Science") {
-            return this.scienceQuestions.shift()
+        if (category == this.scienceCategory.name) {
+            return this.scienceCategory.nextQuestion()
         }
-        if (category == "Sports") {
-            return this.sportsQuestions.shift()
+        if (category == this.sportsCategory.name) {
+            return this.sportsCategory.nextQuestion()
         }
-        if (category == "Rock") {
-            return this.rockQuestions.shift()
+        if (category == this.rockCategory.name) {
+            return this.rockCategory.nextQuestion()
         }
 
         throw new Error(`Unknown category ${category}`)
@@ -52,9 +33,12 @@ export class QuestionsDeck {
     categoryAt(position: number) {
         if (this.popCategory.isCategoryAt(position))
             return this.popCategory.name
-        if (this.sciencePositions.includes(position)) return "Science"
-        if (this.sportsPositions.includes(position)) return "Sports"
-        if (this.rockPositions.includes(position)) return "Rock"
+        if (this.scienceCategory.isCategoryAt(position))
+            return this.scienceCategory.name
+        if (this.sportsCategory.isCategoryAt(position))
+            return this.sportsCategory.name
+        if (this.rockCategory.isCategoryAt(position))
+            return this.rockCategory.name
 
         throw new Error(`Invalid position ${position}`)
     }

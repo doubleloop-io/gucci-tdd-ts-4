@@ -1,7 +1,7 @@
 export class QuestionCategory {
+    private questions: Array<string> = []
     constructor(
         public name: string,
-        private questions: Array<string>,
         private positions: number[],
     ) {
         this.fillQuestions()
