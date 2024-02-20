@@ -1,17 +1,6 @@
 import { QuestionsDeck } from "./questions-deck"
 import { QuestionCategory } from "./question-category"
-import { arrayFrom } from "../support/helpers"
-
-class Board {
-    constructor(
-        private noOfCategories: number,
-        private noOfCellPerCategory: number,
-    ) {}
-
-    get totalBoardCells() {
-        return this.noOfCategories * this.noOfCellPerCategory
-    }
-}
+import { Board } from "./board"
 
 export class Game {
     private players: Array<string> = []
@@ -27,54 +16,19 @@ export class Game {
     constructor() {
         const noOfCellPerCategory = 3
         const categoryNames = ["Pop", "Science", "Sports", "Rock"]
-        const categories = [
-            new QuestionCategory(
-                categoryNames[0],
-                this.categoryPositionFor(
-                    categoryNames.length,
-                    noOfCellPerCategory,
-                    0,
+
+        this.board = new Board(categoryNames.length, noOfCellPerCategory)
+
+        const categories = categoryNames.map(
+            (name, index) =>
+                new QuestionCategory(
+                    name,
+                    this.board.categoryPositionFor(index),
                 ),
-            ),
-            new QuestionCategory(
-                categoryNames[1],
-                this.categoryPositionFor(
-                    categoryNames.length,
-                    noOfCellPerCategory,
-                    1,
-                ),
-            ),
-            new QuestionCategory(
-                categoryNames[2],
-                this.categoryPositionFor(
-                    categoryNames.length,
-                    noOfCellPerCategory,
-                    2,
-                ),
-            ),
-            new QuestionCategory(
-                categoryNames[3],
-                this.categoryPositionFor(
-                    categoryNames.length,
-                    noOfCellPerCategory,
-                    3,
-                ),
-            ),
-        ]
-        this.board = new Board(categories.length, noOfCellPerCategory)
+        )
+
         this.questionsDeck = new QuestionsDeck(categories)
     }
-
-    private categoryPositionFor(
-        noOfCategories: number,
-        noOfCellPerCategory: number,
-        categoryIndex: number,
-    ) {
-        return arrayFrom(0, noOfCellPerCategory).map(
-            (i) => i * noOfCategories + categoryIndex,
-        )
-    }
-
     public add(name: string): boolean {
         this.players.push(name)
         this.places[this.howManyPlayers()] = 0
