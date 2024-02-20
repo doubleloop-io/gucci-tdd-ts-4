@@ -42,12 +42,8 @@ export class Game {
                     this.players[this.currentPlayer] +
                         " is getting out of the penalty box",
                 )
-                this.places[this.currentPlayer] =
-                    this.places[this.currentPlayer] + roll
-                if (this.places[this.currentPlayer] > 11) {
-                    this.places[this.currentPlayer] =
-                        this.places[this.currentPlayer] - 12
-                }
+
+                this.advanceCurrentPlayer(roll)
 
                 console.log(
                     this.players[this.currentPlayer] +
@@ -64,12 +60,7 @@ export class Game {
                 this.isGettingOutOfPenaltyBox = false
             }
         } else {
-            this.places[this.currentPlayer] =
-                this.places[this.currentPlayer] + roll
-            if (this.places[this.currentPlayer] > 11) {
-                this.places[this.currentPlayer] =
-                    this.places[this.currentPlayer] - 12
-            }
+            this.advanceCurrentPlayer(roll)
 
             console.log(
                 this.players[this.currentPlayer] +
@@ -79,6 +70,11 @@ export class Game {
             console.log("The category is " + this.currentCategory())
             this.askQuestion()
         }
+    }
+
+    private advanceCurrentPlayer(roll: number) {
+        const nextPosition = this.places[this.currentPlayer] + roll
+        this.places[this.currentPlayer] = nextPosition % 12
     }
 
     private askQuestion(): void {

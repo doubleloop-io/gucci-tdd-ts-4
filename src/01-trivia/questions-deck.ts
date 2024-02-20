@@ -9,6 +9,7 @@ export class QuestionsDeck {
             new QuestionCategory("Science", [1, 5, 9]),
             new QuestionCategory("Sports", [2, 6, 10]),
             new QuestionCategory("Rock", [3, 7, 11]),
+            // new QuestionCategory("History", [4, 8, ??]),
         ]
     }
 
