@@ -1,4 +1,6 @@
 import { QuestionsDeck } from "./questions-deck"
+import { QuestionCategory } from "./question-category"
+import { arrayFrom } from "../support/helpers"
 
 class Board {
     constructor(
@@ -23,10 +25,54 @@ export class Game {
     private board: Board
 
     constructor() {
-        const noOfCategories = 4
         const noOfCellPerCategory = 3
-        this.board = new Board(noOfCategories, noOfCellPerCategory)
-        this.questionsDeck = new QuestionsDeck()
+        const categoryNames = ["Pop", "Science", "Sports", "Rock"]
+        const categories = [
+            new QuestionCategory(
+                categoryNames[0],
+                this.categoryPositionFor(
+                    categoryNames.length,
+                    noOfCellPerCategory,
+                    0,
+                ),
+            ),
+            new QuestionCategory(
+                categoryNames[1],
+                this.categoryPositionFor(
+                    categoryNames.length,
+                    noOfCellPerCategory,
+                    1,
+                ),
+            ),
+            new QuestionCategory(
+                categoryNames[2],
+                this.categoryPositionFor(
+                    categoryNames.length,
+                    noOfCellPerCategory,
+                    2,
+                ),
+            ),
+            new QuestionCategory(
+                categoryNames[3],
+                this.categoryPositionFor(
+                    categoryNames.length,
+                    noOfCellPerCategory,
+                    3,
+                ),
+            ),
+        ]
+        this.board = new Board(categories.length, noOfCellPerCategory)
+        this.questionsDeck = new QuestionsDeck(categories)
+    }
+
+    private categoryPositionFor(
+        noOfCategories: number,
+        noOfCellPerCategory: number,
+        categoryIndex: number,
+    ) {
+        return arrayFrom(0, noOfCellPerCategory).map(
+            (i) => i * noOfCategories + categoryIndex,
+        )
     }
 
     public add(name: string): boolean {
