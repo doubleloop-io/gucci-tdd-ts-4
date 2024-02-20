@@ -1,6 +1,31 @@
+class QuestionCategory {
+    constructor(
+        public name: string,
+        private questions: Array<string>,
+        private positions: number[],
+    ) {
+        this.fillQuestions()
+    }
+
+    fillQuestions() {
+        for (let i = 0; i < 50; i++) {
+            this.questions.push(`${this.name} Question ` + i)
+        }
+    }
+
+    nextQuestion() {
+        return this.questions.shift()
+    }
+
+    isCategoryAt(position: number) {
+        return this.positions.includes(position)
+    }
+}
+
 export class QuestionsDeck {
     private readonly popQuestions: Array<string> = []
     private popPositions = [0, 4, 8]
+    popCategory: QuestionCategory
 
     private readonly scienceQuestions: Array<string> = []
     private sciencePositions = [1, 5, 9]
@@ -12,12 +37,17 @@ export class QuestionsDeck {
     private rockPositions = [3, 7, 11]
 
     constructor() {
+        this.popCategory = new QuestionCategory(
+            "Pop",
+            this.popQuestions,
+            this.popPositions,
+        )
+
         this.fillQuestions()
     }
 
     private fillQuestions() {
         for (let i = 0; i < 50; i++) {
-            this.popQuestions.push("Pop Question " + i)
             this.scienceQuestions.push("Science Question " + i)
             this.sportsQuestions.push("Sports Question " + i)
             this.rockQuestions.push("Rock Question " + i)
@@ -25,8 +55,8 @@ export class QuestionsDeck {
     }
 
     questionFor(category: string) {
-        if (category == "Pop") {
-            return this.popQuestions.shift()
+        if (category == this.popCategory.name) {
+            return this.popCategory.nextQuestion()
         }
         if (category == "Science") {
             return this.scienceQuestions.shift()
@@ -42,7 +72,8 @@ export class QuestionsDeck {
     }
 
     categoryAt(position: number) {
-        if (this.popPositions.includes(position)) return "Pop"
+        if (this.popCategory.isCategoryAt(position))
+            return this.popCategory.name
         if (this.sciencePositions.includes(position)) return "Science"
         if (this.sportsPositions.includes(position)) return "Sports"
         if (this.rockPositions.includes(position)) return "Rock"
