@@ -17,7 +17,7 @@ export class Game {
         const noOfCellPerCategory = 3
         const categoryNames = ["Pop", "Science", "Sports", "Rock"]
 
-        this.board = new Board(categoryNames.length, noOfCellPerCategory)
+        this.board = new Board(categoryNames, noOfCellPerCategory)
 
         const categories = categoryNames.map(
             (name, index) =>
@@ -26,7 +26,6 @@ export class Game {
                     this.board.categoryPositionFor(index),
                 ),
         )
-
         this.questionsDeck = new QuestionsDeck(categories)
     }
     public add(name: string): boolean {
@@ -101,7 +100,8 @@ export class Game {
 
     private currentCategory(): string {
         const currentPlayerPlace = this.places[this.currentPlayer]
-        return this.questionsDeck.categoryAt(currentPlayerPlace)
+
+        return this.board.categoryAt(currentPlayerPlace)
     }
 
     private didPlayerWin(): boolean {
