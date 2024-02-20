@@ -1,5 +1,16 @@
 import { QuestionsDeck } from "./questions-deck"
 
+class Board {
+    constructor(
+        private noOfCategories: number,
+        private noOfCellPerCategory: number,
+    ) {}
+
+    get totalBoardCells() {
+        return this.noOfCategories * this.noOfCellPerCategory
+    }
+}
+
 export class Game {
     private players: Array<string> = []
     private places: Array<number> = new Array(6).fill(0)
@@ -9,8 +20,12 @@ export class Game {
     private isGettingOutOfPenaltyBox = false
 
     private questionsDeck: QuestionsDeck
+    private board: Board
 
     constructor() {
+        const noOfCategories = 4
+        const noOfCellPerCategory = 3
+        this.board = new Board(noOfCategories, noOfCellPerCategory)
         this.questionsDeck = new QuestionsDeck()
     }
 
@@ -74,7 +89,8 @@ export class Game {
 
     private advanceCurrentPlayer(roll: number) {
         const nextPosition = this.places[this.currentPlayer] + roll
-        this.places[this.currentPlayer] = nextPosition % 12
+        this.places[this.currentPlayer] =
+            nextPosition % this.board.totalBoardCells
     }
 
     private askQuestion(): void {
