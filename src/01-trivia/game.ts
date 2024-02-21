@@ -41,43 +41,21 @@ export class Game {
     }
 
     public roll(roll: number) {
-        console.log(this.players[this.currentPlayer] + " is the current player")
-        console.log("They have rolled a " + roll)
+        this.printCurrentPlayerAndDiceRoll(roll)
 
-        if (this.inPenaltyBox[this.currentPlayer]) {
-            if (roll % 2 != 0) {
-                this.isGettingOutOfPenaltyBox = true
+        this.isGettingOutOfPenaltyBox = roll % 2 != 0
 
-                console.log(
-                    this.players[this.currentPlayer] +
-                        " is getting out of the penalty box",
-                )
+        const isInPenalty = this.inPenaltyBox[this.currentPlayer]
+        const notInPenaltyBoxOrIsGettingOut =
+            !isInPenalty || this.isGettingOutOfPenaltyBox
 
-                this.advanceCurrentPlayer(roll)
+        if (isInPenalty) {
+            this.printIsGettingOutOfPenaltyStatus(this.isGettingOutOfPenaltyBox)
+        }
 
-                console.log(
-                    this.players[this.currentPlayer] +
-                        "'s new location is " +
-                        this.places[this.currentPlayer],
-                )
-                console.log("The category is " + this.currentCategory())
-                this.askQuestion()
-            } else {
-                console.log(
-                    this.players[this.currentPlayer] +
-                        " is not getting out of the penalty box",
-                )
-                this.isGettingOutOfPenaltyBox = false
-            }
-        } else {
+        if (notInPenaltyBoxOrIsGettingOut) {
             this.advanceCurrentPlayer(roll)
-
-            console.log(
-                this.players[this.currentPlayer] +
-                    "'s new location is " +
-                    this.places[this.currentPlayer],
-            )
-            console.log("The category is " + this.currentCategory())
+            this.printNextLocationAndCategory()
             this.askQuestion()
         }
     }
@@ -159,5 +137,41 @@ export class Game {
 
             return winner
         }
+    }
+
+    private printCurrentPlayerAndDiceRoll(roll: number) {
+        console.log(this.players[this.currentPlayer] + " is the current player")
+        console.log("They have rolled a " + roll)
+    }
+
+    private printNextLocationAndCategory() {
+        console.log(
+            this.players[this.currentPlayer] +
+                "'s new location is " +
+                this.places[this.currentPlayer],
+        )
+        console.log("The category is " + this.currentCategory())
+    }
+
+    private printIsGettingOutOfPenaltyStatus(isGettingOutOfPenalty: boolean) {
+        if (isGettingOutOfPenalty) {
+            this.printIsGettingOutOfPenalty()
+        } else {
+            this.printIsNotGettingOutOfPenalty()
+        }
+    }
+
+    private printIsGettingOutOfPenalty() {
+        console.log(
+            this.players[this.currentPlayer] +
+                " is getting out of the penalty box",
+        )
+    }
+
+    private printIsNotGettingOutOfPenalty() {
+        console.log(
+            this.players[this.currentPlayer] +
+                " is not getting out of the penalty box",
+        )
     }
 }
